@@ -1,0 +1,33 @@
+.table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-bottom: 20px;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #04AA6D;
+    
+    color: white;
+  }
+  .table tr:last-child td {
+    border-bottom: 1px solid #04AA6D !important
+  }
+  button{
+    background-color: #04AA6D;
+    height: 30px;
+    width:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color :  white;
+    border-radius: 5%;
+    border: 1px solid #04AA6D;
+    cursor : pointer;
+  }
+  
