@@ -32,15 +32,11 @@ const TableWithPagination = () => {
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(prevPage => prevPage + 1); 
-    }
+    setCurrentPage((prevPage) => (prevPage < totalPages ? prevPage + 1 : prevPage));
   };
 
   const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(prevPage => prevPage - 1); 
-    }
+    setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : prevPage));
   };
 
   if (error) {
@@ -60,14 +56,20 @@ const TableWithPagination = () => {
           </tr>
         </thead>
         <tbody>
-          {currentData.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.name}</td>
-              <td>{item.email}</td>
-              <td>{item.role}</td>
+          {currentData.length ? (
+            currentData.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.email}</td>
+                <td>{item.role}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4" style={{ textAlign: 'center' }}>No Data Available</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
 
@@ -80,7 +82,7 @@ const TableWithPagination = () => {
           {currentPage}
         </span>
 
-        <button className={style.button} onClick={handleNextPage} disabled={currentPage === totalPages}>
+        <button className={style.button} onClick={handleNextPage} disabled={currentPage === totalPages || !data.length}>
           Next
         </button>
       </div>
